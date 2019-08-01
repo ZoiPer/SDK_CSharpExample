@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoiperWinForms", "ZoiperWinForms\ZoiperWinForms.csproj", "{170914DE-6B52-432E-AF60-7186ABED0E05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Debug|x64.Build.0 = Debug|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Debug|x86.Build.0 = Debug|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Release|x64.ActiveCfg = Release|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Release|x64.Build.0 = Release|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Release|x86.ActiveCfg = Release|Any CPU
+		{170914DE-6B52-432E-AF60-7186ABED0E05}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53DA4793-948B-4A67-AD5C-732EC12B58FB}
+	EndGlobalSection
+EndGlobal
