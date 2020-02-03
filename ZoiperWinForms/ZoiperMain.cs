@@ -206,7 +206,8 @@ namespace ZoiperWinForms
         private void btnCertActivate_Click(object sender, EventArgs e)
         {
             grpBActication.Enabled = false;
-            voip.Initialize(pathForCertificate , tbCertUserName.Text, tbCertPassword.Text);
+            LoggingLevel logLevel = (LoggingLevel)Enum.Parse(typeof(LoggingLevel),cbDebugLevel.Text);
+            voip.Initialize(pathForCertificate , tbCertUserName.Text, tbCertPassword.Text, logLevel);
         }
 
         private void ZoiperMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -476,7 +477,8 @@ namespace ZoiperWinForms
 
         private void btnCreateCertificate(object sender, EventArgs e)
         {
-            voip.Initialize(pathForCertificate + "\\" + tbCertUserName.Text + ".certificate", tbCertUserName.Text, tbCertPassword.Text);
+            LoggingLevel logLevel = (LoggingLevel)Enum.Parse(typeof(LoggingLevel), cbDebugLevel.Text);
+            voip.Initialize(pathForCertificate + "\\" + tbCertUserName.Text + ".certificate", tbCertUserName.Text, tbCertPassword.Text, logLevel);
         }
 
         private void btnBlindTransfer_Click(object sender, EventArgs e)

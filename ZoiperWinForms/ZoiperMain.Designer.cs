@@ -69,10 +69,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.grpBActication = new System.Windows.Forms.GroupBox();
+            this.cbDebugLevel = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnOfflineActFolder = new System.Windows.Forms.Button();
             this.btnCertActivate = new System.Windows.Forms.Button();
             this.chSRTP = new System.Windows.Forms.CheckBox();
             this.grpAddUser = new System.Windows.Forms.GroupBox();
+            this.cbProtocolType = new System.Windows.Forms.ComboBox();
             this.chRTCPFeedback = new System.Windows.Forms.CheckBox();
             this.chPreconditions = new System.Windows.Forms.CheckBox();
             this.chStun = new System.Windows.Forms.CheckBox();
@@ -80,7 +83,6 @@
             this.chFMTP = new System.Windows.Forms.CheckBox();
             this.chZRTP = new System.Windows.Forms.CheckBox();
             this.btnProbeSip = new System.Windows.Forms.Button();
-            this.cbProtocolType = new System.Windows.Forms.ComboBox();
             this.grpBAccountState.SuspendLayout();
             this.grpCallControl.SuspendLayout();
             this.grpBActication.SuspendLayout();
@@ -217,9 +219,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbRunLog.Enabled = false;
-            this.rtbRunLog.Location = new System.Drawing.Point(12, 388);
+            this.rtbRunLog.Location = new System.Drawing.Point(12, 417);
             this.rtbRunLog.Name = "rtbRunLog";
-            this.rtbRunLog.Size = new System.Drawing.Size(866, 211);
+            this.rtbRunLog.Size = new System.Drawing.Size(866, 182);
             this.rtbRunLog.TabIndex = 14;
             this.rtbRunLog.Text = "";
             this.rtbRunLog.TextChanged += new System.EventHandler(this.rtbRunLog_TextChanged);
@@ -265,7 +267,7 @@
             this.grpBAccountState.Enabled = false;
             this.grpBAccountState.Location = new System.Drawing.Point(535, 12);
             this.grpBAccountState.Name = "grpBAccountState";
-            this.grpBAccountState.Size = new System.Drawing.Size(343, 370);
+            this.grpBAccountState.Size = new System.Drawing.Size(343, 395);
             this.grpBAccountState.TabIndex = 17;
             this.grpBAccountState.TabStop = false;
             this.grpBAccountState.Text = "VoIP User";
@@ -297,7 +299,7 @@
             this.grpCallControl.Enabled = false;
             this.grpCallControl.Location = new System.Drawing.Point(9, 165);
             this.grpCallControl.Name = "grpCallControl";
-            this.grpCallControl.Size = new System.Drawing.Size(326, 156);
+            this.grpCallControl.Size = new System.Drawing.Size(326, 168);
             this.grpCallControl.TabIndex = 24;
             this.grpCallControl.TabStop = false;
             this.grpCallControl.Text = "Call Control";
@@ -487,6 +489,8 @@
             // 
             // grpBActication
             // 
+            this.grpBActication.Controls.Add(this.cbDebugLevel);
+            this.grpBActication.Controls.Add(this.label10);
             this.grpBActication.Controls.Add(this.btnOfflineActFolder);
             this.grpBActication.Controls.Add(this.btnCertActivate);
             this.grpBActication.Controls.Add(this.label8);
@@ -495,14 +499,40 @@
             this.grpBActication.Controls.Add(this.tbCertPassword);
             this.grpBActication.Location = new System.Drawing.Point(12, 12);
             this.grpBActication.Name = "grpBActication";
-            this.grpBActication.Size = new System.Drawing.Size(192, 128);
+            this.grpBActication.Size = new System.Drawing.Size(190, 159);
             this.grpBActication.TabIndex = 22;
             this.grpBActication.TabStop = false;
             this.grpBActication.Text = "SDK Activation";
             // 
+            // cbDebugLevel
+            // 
+            this.cbDebugLevel.FormattingEnabled = true;
+            this.cbDebugLevel.Items.AddRange(new object[] {
+            "None",
+            "Critical",
+            "Error",
+            "Warning",
+            "Info",
+            "Debug",
+            "Stack"});
+            this.cbDebugLevel.SelectedIndex = 5;
+            this.cbDebugLevel.Location = new System.Drawing.Point(81, 71);
+            this.cbDebugLevel.Name = "cbDebugLevel";
+            this.cbDebugLevel.Size = new System.Drawing.Size(98, 21);
+            this.cbDebugLevel.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 74);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Debug Level";
+            // 
             // btnOfflineActFolder
             // 
-            this.btnOfflineActFolder.Location = new System.Drawing.Point(36, 71);
+            this.btnOfflineActFolder.Location = new System.Drawing.Point(35, 103);
             this.btnOfflineActFolder.Name = "btnOfflineActFolder";
             this.btnOfflineActFolder.Size = new System.Drawing.Size(143, 23);
             this.btnOfflineActFolder.TabIndex = 28;
@@ -512,7 +542,7 @@
             // 
             // btnCertActivate
             // 
-            this.btnCertActivate.Location = new System.Drawing.Point(36, 97);
+            this.btnCertActivate.Location = new System.Drawing.Point(35, 130);
             this.btnCertActivate.Name = "btnCertActivate";
             this.btnCertActivate.Size = new System.Drawing.Size(143, 23);
             this.btnCertActivate.TabIndex = 23;
@@ -552,12 +582,23 @@
             this.grpAddUser.Controls.Add(this.label3);
             this.grpAddUser.Controls.Add(this.label4);
             this.grpAddUser.Controls.Add(this.lbUsers);
-            this.grpAddUser.Location = new System.Drawing.Point(12, 146);
+            this.grpAddUser.Location = new System.Drawing.Point(12, 177);
             this.grpAddUser.Name = "grpAddUser";
-            this.grpAddUser.Size = new System.Drawing.Size(517, 236);
+            this.grpAddUser.Size = new System.Drawing.Size(517, 234);
             this.grpAddUser.TabIndex = 26;
             this.grpAddUser.TabStop = false;
             this.grpAddUser.Text = "Add User";
+            // 
+            // cbProtocolType
+            // 
+            this.cbProtocolType.FormattingEnabled = true;
+            this.cbProtocolType.Items.AddRange(new object[] {
+            "SIP",
+            "IAX"});
+            this.cbProtocolType.Location = new System.Drawing.Point(75, 119);
+            this.cbProtocolType.Name = "cbProtocolType";
+            this.cbProtocolType.Size = new System.Drawing.Size(176, 21);
+            this.cbProtocolType.TabIndex = 33;
             // 
             // chRTCPFeedback
             // 
@@ -628,17 +669,6 @@
             this.btnProbeSip.Text = "Probe SIP";
             this.btnProbeSip.UseVisualStyleBackColor = true;
             this.btnProbeSip.Click += new System.EventHandler(this.btnProbeSip_Click);
-            // 
-            // cbProtocolType
-            // 
-            this.cbProtocolType.FormattingEnabled = true;
-            this.cbProtocolType.Items.AddRange(new object[] {
-            "SIP",
-            "IAX"});
-            this.cbProtocolType.Location = new System.Drawing.Point(75, 119);
-            this.cbProtocolType.Name = "cbProtocolType";
-            this.cbProtocolType.Size = new System.Drawing.Size(176, 21);
-            this.cbProtocolType.TabIndex = 33;
             // 
             // ZoiperMain
             // 
@@ -721,6 +751,8 @@
         private System.Windows.Forms.Button btnAttendedTransfer;
         private System.Windows.Forms.Button btnConference;
         private System.Windows.Forms.ComboBox cbProtocolType;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbDebugLevel;
     }
 }
 

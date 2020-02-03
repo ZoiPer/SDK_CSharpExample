@@ -227,7 +227,7 @@ namespace ZoiperWinForms
             ctx.SetStatusListener(cthEvH);
         }
 
-        public bool Initialize(String path ,String certUserName, String certPassword)
+        public bool Initialize(String path ,String certUserName, String certPassword, LoggingLevel logLevel)
         {
             if (ctx == null)
             {
@@ -235,7 +235,7 @@ namespace ZoiperWinForms
             }
 
             string LogFile = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\zdk.net.log.txt";
-            ctx.Logger.LogOpen(LogFile, null, LoggingLevel.Debug, 0);
+            ctx.Logger.LogOpen(LogFile, null, logLevel, 0);
 
             if (path != "" && countInits == 0)
             {
@@ -260,6 +260,18 @@ namespace ZoiperWinForms
         private void ZDK_NET_OnUnhandledCallback(string message)
         {
             OnZoiperEvent("OnUnhandledCallback: " + message);
+        }
+
+        internal void StartContext()
+        {
+            ctx.Configuration.SIPPort = 44444;
+            ctx.Configuration.RTPPort = 55555;
+
+            var res = ctx.StartContext();
+            if (res.Code != ResultCode.Ok)
+                OnZoiperEvent("StartContext: Failed with reason= " + res.Text);
+
+            ctx.VideoControls.SetFormat(352, 288, 6);
         }
 
         internal void StopContext()
@@ -297,16 +309,10 @@ namespace ZoiperWinForms
 
             if (secureCert.Status == ActivationStatus.Success)
             {
-                ctx.Configuration.SIPPort = 44444;
-                ctx.Configuration.RTPPort = 55555;
+                //"StartContext()" MUST NOT be invoked from any callback!!! Simply call it from a new thread.
+                Thread t = new Thread(new ThreadStart(StartContext));
+                t.Start();
 
-                ctx.StartContext();
-
-                //Account account;
-                //Call activeCall;
-                
-
-                ctx.VideoControls.SetFormat(352, 288, 6);
                 //OnActivationSuccess(secureCert.Reason);
             }
             else
@@ -471,9 +477,9 @@ namespace ZoiperWinForms
                 // Note it has to be enabled both sides
                 // if you get error "415 Unsupported Media Type"
                 // or "Can't find matching codec in SDP (code: 2)"
-                // Make sure "EnableSRTP = true" and 
+                // Make sure "EnableSRTP = true" and
                 // "SRTP key negociation = SDES" in Zoiper5
-                // On succes and secure connection you will get the 
+                // On succes and secure connection you will get the
                 // "OnCallSecurityLevelChanged channel: Audio level: SdesSrtp"
                 // event
                 regCfg.SIP.EnableSRTP = SRTP;
@@ -499,7 +505,6 @@ namespace ZoiperWinForms
             AccEventHandler.OnAccountRetryingRegistration += Zoiper_OnAccountRetryingRegistration;
             AccEventHandler.OnAccountChatMessageReceived += Zoiper_OnAccountChatMessageReceived;
             AccEventHandler.OnAccountIncomingCall += Zoiper_OnAccountIncomingCall;
-            AccEventHandler.OnAccountPushTokenReceived += Zoiper_OnAccountPushTokenReceived;
 
             account.SetStatusEventListener(AccEventHandler);
 
@@ -608,12 +613,6 @@ namespace ZoiperWinForms
 
             if (OnZoiperEvent != null)
                 OnZoiperEvent("AccountIncomingCall: " + call.CalleeName + " number: " + call.CalleeNumber);
-        }
-
-        public void Zoiper_OnAccountPushTokenReceived(Account account, string pushToke)
-        {
-            if (OnZoiperEvent != null)
-                OnZoiperEvent("AccountPushTokenReceived: " + pushToke);
         }
 
         public void createOfflineCert(string path, string username, string password)
