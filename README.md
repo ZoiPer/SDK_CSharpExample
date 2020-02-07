@@ -122,7 +122,7 @@ ctx.Activation.StartSDK("", certUserName, certPassword)
 If the activation is successful, you will receive a result code “OK” from the StartSDK() method. You are now ready to test the Demo. 
 In case the activation fails, the method will return a code with the reason for the failure. 
 
-#####Offline Activation
+##### Offline Activation
 Follow these steps to activate the demo offline:
 1. Generate a certificate
 2. Send it to register5@zoiper.com
