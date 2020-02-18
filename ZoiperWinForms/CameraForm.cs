@@ -112,7 +112,7 @@ namespace ZoiperWinForms
             byte[] img = ImageToByteArray(image);
             fixed (byte* ptr = img)
             {
-                call.SendVideoFrame(ptr, img.Length, 0);
+                call.SendVideoFrame(ptr, img.Length, VideoFrameFormat.YUV420p);
             }
         }
 
