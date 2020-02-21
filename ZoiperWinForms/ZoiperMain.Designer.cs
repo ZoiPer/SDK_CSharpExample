@@ -238,6 +238,7 @@
             this.cbTransportType.Name = "cbTransportType";
             this.cbTransportType.Size = new System.Drawing.Size(176, 21);
             this.cbTransportType.TabIndex = 15;
+            this.cbTransportType.Text = "UDP";
             // 
             // label6
             // 
@@ -515,11 +516,11 @@
             "Info",
             "Debug",
             "Stack"});
-            this.cbDebugLevel.SelectedIndex = 5;
             this.cbDebugLevel.Location = new System.Drawing.Point(81, 71);
             this.cbDebugLevel.Name = "cbDebugLevel";
             this.cbDebugLevel.Size = new System.Drawing.Size(98, 21);
             this.cbDebugLevel.TabIndex = 30;
+            this.cbDebugLevel.Text = "Debug";
             // 
             // label10
             // 
@@ -599,6 +600,7 @@
             this.cbProtocolType.Name = "cbProtocolType";
             this.cbProtocolType.Size = new System.Drawing.Size(176, 21);
             this.cbProtocolType.TabIndex = 33;
+            this.cbProtocolType.Text = "SIP";
             // 
             // chRTCPFeedback
             // 
