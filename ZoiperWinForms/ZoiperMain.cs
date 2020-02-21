@@ -274,16 +274,7 @@ namespace ZoiperWinForms
         {
             var activeCall = lbActiveCalls.SelectedItem as ZDK_NET.Call;
             if (activeCall != null)
-            {
                 activeCall.HangUp();
-
-                ZoiperManager.VoIPUser voipUser = lbUsers.SelectedItem as ZoiperManager.VoIPUser;
-                if (voipUser != null)
-                {
-                    voipUser.ActiveCalls.Remove(activeCall.CallHandle);
-                    AccountInfoRefresh(voipUser);
-                }
-            }
             else
                 UnavailableAction();
         }
