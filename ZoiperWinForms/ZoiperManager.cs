@@ -223,7 +223,7 @@ namespace ZoiperWinForms
 
             ContextEventsHandler cthEvH = new ContextEventsHandler();
             cthEvH.OnContextActivationCompleted += ZDK_NET_OnContextActivationCompleted;
-            cthEvH.OnContextSecureCertError += ZDK_NET_OnContextSecureCertError;
+            cthEvH.OnContextSecureCertStatus += ZDK_NET_OnContextSecureCertStatus;
             ctx.SetStatusListener(cthEvH);
         }
 
@@ -295,11 +295,11 @@ namespace ZoiperWinForms
             return errorMask;
         }
 
-        private void ZDK_NET_OnContextSecureCertError(Context context, SecureCertData secureCert)
+        private void ZDK_NET_OnContextSecureCertStatus(Context context, SecureCertData secureCert)
         {
             string errorMask = ParseErrorMask(secureCert.errorMask);
             if (OnZoiperEvent != null)
-                OnZoiperEvent("OnContextSecureCertError ActualNameList: " + secureCert.ActualNameList + " CertIssuer:" + secureCert.CertIssuer + " errorMask: " + errorMask);
+                OnZoiperEvent("OnContextSecureCertStatus ActualNameList: " + secureCert.ActualNameList + " CertIssuer:" + secureCert.CertIssuer + " errorMask: " + errorMask);
         }
 
         private void ZDK_NET_OnContextActivationCompleted(ZDK_NET.Context context, ZDK_NET.ActivationResult secureCert)
