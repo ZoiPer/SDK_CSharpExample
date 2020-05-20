@@ -34,7 +34,6 @@ namespace ZoiperWinForms
         public class VoIPUser
         {
             public static CallEventsHandler ceh = null;
-            public static VideoEventsHandler veh = null;
             public static VideoRendererEventsHandler vreh = null;
 
             public VoIPUser()
@@ -118,19 +117,14 @@ namespace ZoiperWinForms
                 ceh.OnCallTransferFailure += Manager.ZDK_NET_OnCallTransferFailure;
                 ceh.OnCallTransferStarted += Manager.ZDK_NET_OnCallTransferStarted;
                 ceh.OnCallTransferSucceeded += Manager.ZDK_NET_OnCallTransferSucceeded;
+                ceh.OnVideoOffered += Manager.ZDK_NET_OnVideoOffered;
+                ceh.OnVideoStarted += Manager.ZDK_NET_OnVideoStarted;
+                ceh.OnVideoStopped += Manager.ZDK_NET_OnVideoStopped;
+                ceh.OnVideoCameraChanged += Manager.ZDK_NET_OnVideoCameraChanged;
 
                 GC.KeepAlive(ceh);
 
                 activeCall.SetCallStatusListener(ceh);
-
-                veh = new VideoEventsHandler();
-                veh.OnVideoOffered += Manager.ZDK_NET_OnVideoOffered;
-                veh.OnVideoStarted += Manager.ZDK_NET_OnVideoStarted;
-                veh.OnVideoStopped += Manager.ZDK_NET_OnVideoStopped;
-                veh.OnVideoCameraChanged += Manager.ZDK_NET_OnVideoCameraChanged;
-                GC.KeepAlive(veh);
-
-                activeCall.SetVideoCallNotificiationsListener(veh);
 
                 vreh = new VideoRendererEventsHandler();
                 vreh.OnVideoFrameReceived += Manager.ZDK_NET_OnVideoFrameReceived;
