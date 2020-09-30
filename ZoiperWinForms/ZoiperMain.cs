@@ -435,10 +435,10 @@ namespace ZoiperWinForms
         {
             
             txtInstructions.MinimumSize = new Size(250, 150);
-            txtInstructions.Text = " 1. Select a path for the certificate to be holded \n\n" +
+            txtInstructions.Text = " 1. Select a path for the certificate to be held \n\n" +
                 " 2. Press create certificate \n\n" +
-                " 3. Take the certificat and send it to register5@shop.zoiper \n\n" +
-                " 4. You will receive an xml file copy it to the folder you just took the certificate from \n\n" +
+                " 3. Take the certificate and send it to \"register5@shop.zoiper.com\" \n\n" +
+                " 4. You will receive an email containing \".xml\" file. Copy it to the folder you just took the certificate from \n\n" +
                 " 5. Press Activate";
 
             browseFolder.Location = new System.Drawing.Point(18, 180);
