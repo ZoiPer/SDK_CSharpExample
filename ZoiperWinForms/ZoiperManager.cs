@@ -258,7 +258,7 @@ namespace ZoiperWinForms
 
         internal void StartContext()
         {
-            ctx.Configuration.SIPPort = 44444;
+            ctx.Configuration.SIPUdpPort = 44444;
             ctx.Configuration.RTPPort = 55555;
 
             var res = ctx.StartContext();
