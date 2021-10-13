@@ -40,6 +40,8 @@ namespace ZoiperWinForms
         private string callrecordfilename = "";
         private string pathForCertificate = "";
 
+        private ZDK_NET.Conference m_conference = null;
+
         public ZoiperMain()
         {
             InitializeComponent();
@@ -247,27 +249,13 @@ namespace ZoiperWinForms
             }
         }
 
-        private ZDK_NET.Conference m_conference = null;
         private void btnAddToConference_Click(object sender, EventArgs e)
         {
             var activeCall = lbActiveCalls.SelectedItem as ZDK_NET.Call;
-            if (activeCall != null)
-            {
-                if (m_conference == null)
-                {
-                    var calls = new List<ZDK_NET.Call>();
-                    foreach (ZDK_NET.Call call in lbActiveCalls.Items)
-                    {
-                        calls.Add(call);
-                    }
-                    m_conference = voip.CreateConference(calls);
-                }
-                else
-                    m_conference.AddCall(activeCall);
-            }
+            if ((m_conference != null) && (activeCall != null))
+                m_conference.AddCall(activeCall);
             else
                 UnavailableAction();
-
         }
 
         private void btnHangUp_Click(object sender, EventArgs e)
@@ -496,6 +484,24 @@ namespace ZoiperWinForms
                 testActive.Held = !testActive.Held;
                 testSecond.Held = !testSecond.Held;
                 resTransfer = testActive.AttendedTransfer(testSecond);
+            }
+            else
+            {
+                UnavailableAction();
+            }
+        }
+
+        private void btnConference_Click(object sender, EventArgs e)
+        {
+            var activeCall = lbActiveCalls.SelectedItem as ZDK_NET.Call;
+            if ((activeCall != null) && (m_conference == null))
+            {
+                var calls = new List<ZDK_NET.Call>();
+                foreach (ZDK_NET.Call call in lbActiveCalls.Items)
+                {
+                    calls.Add(call);
+                }
+                m_conference = voip.CreateConference(calls);
             }
             else
             {

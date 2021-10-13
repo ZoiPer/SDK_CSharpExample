@@ -313,6 +313,7 @@
             this.btnConference.TabIndex = 32;
             this.btnConference.Text = "Conference";
             this.btnConference.UseVisualStyleBackColor = true;
+            this.btnConference.Click += new System.EventHandler(this.btnConference_Click);
             // 
             // btnAttendedTransfer
             // 
