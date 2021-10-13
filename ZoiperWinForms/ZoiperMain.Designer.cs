@@ -49,6 +49,7 @@
             this.btnSendMessage = new System.Windows.Forms.Button();
             this.grpCallControl = new System.Windows.Forms.GroupBox();
             this.btnConference = new System.Windows.Forms.Button();
+            this.btnCloseConference = new System.Windows.Forms.Button();
             this.btnAttendedTransfer = new System.Windows.Forms.Button();
             this.blindTransfer = new System.Windows.Forms.TextBox();
             this.btnBlindTransfer = new System.Windows.Forms.Button();
@@ -285,6 +286,7 @@
             // 
             // grpCallControl
             // 
+            this.grpCallControl.Controls.Add(this.btnCloseConference);
             this.grpCallControl.Controls.Add(this.btnConference);
             this.grpCallControl.Controls.Add(this.btnAttendedTransfer);
             this.grpCallControl.Controls.Add(this.blindTransfer);
@@ -305,13 +307,23 @@
             this.grpCallControl.TabStop = false;
             this.grpCallControl.Text = "Call Control";
             // 
+            // btnCloseConference
+            // 
+            this.btnCloseConference.Location = new System.Drawing.Point(249, 48);
+            this.btnCloseConference.Name = "btnCloseConference";
+            this.btnCloseConference.Size = new System.Drawing.Size(71, 23);
+            this.btnCloseConference.TabIndex = 33;
+            this.btnCloseConference.Text = "Close Conf";
+            this.btnCloseConference.UseVisualStyleBackColor = true;
+            this.btnCloseConference.Click += new System.EventHandler(this.btnCloseConference_Click);
+            // 
             // btnConference
             // 
             this.btnConference.Location = new System.Drawing.Point(249, 19);
             this.btnConference.Name = "btnConference";
             this.btnConference.Size = new System.Drawing.Size(71, 23);
             this.btnConference.TabIndex = 32;
-            this.btnConference.Text = "Conference";
+            this.btnConference.Text = "Create Conf";
             this.btnConference.UseVisualStyleBackColor = true;
             this.btnConference.Click += new System.EventHandler(this.btnConference_Click);
             // 
@@ -374,7 +386,7 @@
             // 
             // btnMessage
             // 
-            this.btnMessage.Location = new System.Drawing.Point(168, 78);
+            this.btnMessage.Location = new System.Drawing.Point(6, 78);
             this.btnMessage.Name = "btnMessage";
             this.btnMessage.Size = new System.Drawing.Size(75, 23);
             this.btnMessage.TabIndex = 24;
@@ -414,11 +426,11 @@
             // 
             // btnAddToConference
             // 
-            this.btnAddToConference.Location = new System.Drawing.Point(6, 78);
+            this.btnAddToConference.Location = new System.Drawing.Point(249, 78);
             this.btnAddToConference.Name = "btnAddToConference";
-            this.btnAddToConference.Size = new System.Drawing.Size(156, 23);
+            this.btnAddToConference.Size = new System.Drawing.Size(75, 23);
             this.btnAddToConference.TabIndex = 21;
-            this.btnAddToConference.Text = "Add To Conference";
+            this.btnAddToConference.Text = "Add To Conf";
             this.btnAddToConference.UseVisualStyleBackColor = true;
             this.btnAddToConference.Click += new System.EventHandler(this.btnAddToConference_Click);
             // 
@@ -753,6 +765,7 @@
         private System.Windows.Forms.TextBox blindTransfer;
         private System.Windows.Forms.Button btnAttendedTransfer;
         private System.Windows.Forms.Button btnConference;
+        private System.Windows.Forms.Button btnCloseConference;
         private System.Windows.Forms.ComboBox cbProtocolType;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbDebugLevel;

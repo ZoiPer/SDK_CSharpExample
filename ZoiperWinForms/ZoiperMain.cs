@@ -508,5 +508,18 @@ namespace ZoiperWinForms
                 UnavailableAction();
             }
         }
+
+        private void btnCloseConference_Click(object sender, EventArgs e)
+        {
+            if (m_conference != null)
+            {
+                m_conference.HangUp();
+                m_conference = null;
+            }
+            else
+            {
+                UnavailableAction();
+            }
+        }
     }
 }
