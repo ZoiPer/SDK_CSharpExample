@@ -117,6 +117,9 @@ namespace ZoiperWinForms
                 ceh.OnCallTransferFailure += Manager.ZDK_NET_OnCallTransferFailure;
                 ceh.OnCallTransferStarted += Manager.ZDK_NET_OnCallTransferStarted;
                 ceh.OnCallTransferSucceeded += Manager.ZDK_NET_OnCallTransferSucceeded;
+                ceh.OnCallZrtpFailed += Manager.ZDK_NET_OnCallZrtpFailed;
+                ceh.OnCallZrtpSuccess += Manager.ZDK_NET_OnCallZrtpSuccess;
+                ceh.OnCallZrtpSecondaryError += Manager.ZDK_NET_OnCallZrtpSecondaryError;
                 ceh.OnVideoOffered += Manager.ZDK_NET_OnVideoOffered;
                 ceh.OnVideoStarted += Manager.ZDK_NET_OnVideoStarted;
                 ceh.OnVideoStopped += Manager.ZDK_NET_OnVideoStopped;
@@ -170,6 +173,35 @@ namespace ZoiperWinForms
         {
             if (OnZoiperEvent != null)
                 OnZoiperEvent("OnCallTransferSucceeded");
+        }
+
+        private void ZDK_NET_OnCallZrtpFailed(Call call, ExtendedError error)
+        {
+            if (OnZoiperEvent != null)
+                OnZoiperEvent("OnCallZrtpFailed: call= " + call.CallHandle + "(" + call.CalleeName + "), error= " + error.Message);
+        }
+
+        private void ZDK_NET_OnCallZrtpSuccess(Call call, string zidHex, int knownPeer, int cacheMismatch, int peerKnowsUs, ZRTPSASEncoding sasEncoding, string sas, ZRTPHashAlgorithm hash,
+                                               ZRTPCipherAlgorithm cipher, ZRTPAuthTag authTag, ZRTPKeyAgreement keyAgreement)
+        {
+            if ((knownPeer != 0) && (cacheMismatch == 0) && (peerKnowsUs != 0))
+            {
+                call.ConfirmZrtpSas(true);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("SAS Verification is \"" + sas + "\". Please compare the string with your peer!", "SAS Verification", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    call.ConfirmZrtpSas(true);
+                else
+                    call.ConfirmZrtpSas(false);
+            }
+        }
+
+        private void ZDK_NET_OnCallZrtpSecondaryError(Call call, int channel, ExtendedError error)
+        {
+            if (OnZoiperEvent != null)
+                OnZoiperEvent("OnCallZrtpSecondaryError: call= " + call.CallHandle + "(" + call.CalleeName + "), error= " + error.Message);
         }
 
         private void ZDK_NET_OnCallTransferStarted(Call call, string name, string number, string URI)
@@ -594,7 +626,7 @@ namespace ZoiperWinForms
         {
             ActiveUsers[UserId].MakeCall(call);
             DialogResult result = MessageBox.Show("Accept call from: " + call.CalleeName, "Incomming call", MessageBoxButtons.YesNo);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 var res = call.AcceptCall();
                 if ((ResultCode.Ok == res.Code) && !ActiveUsers[UserId].ActiveCalls.Keys.Contains(call.CallHandle))
