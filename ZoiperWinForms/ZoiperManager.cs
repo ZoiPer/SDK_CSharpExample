@@ -297,6 +297,9 @@ namespace ZoiperWinForms
             if (res.Code != ResultCode.Ok)
                 OnZoiperEvent("StartContext: Failed with reason= " + res.Text);
 
+            string ZRTPCacheFile = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\zrtpCache";
+            ctx.EncryptionConfiguration.GlobalZrtpCache(ZRTPCacheFile);
+
             ctx.VideoControls.SetFormat(352, 288, 6);
         }
 
