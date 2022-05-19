@@ -305,7 +305,7 @@ namespace ZoiperWinForms
 
         internal void StopContext()
         {
-            //ctx.StopContext();
+            ctx.StopContext();
         }
 
         private string ParseErrorMask(int mask)
@@ -401,6 +401,7 @@ namespace ZoiperWinForms
 
         public Conference CreateConference(List<Call> calls)
         {
+            OnZoiperEvent("Conference created!");
             return ctx.ConferenceProvider.CreateConference(calls);
         }
 
