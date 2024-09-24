@@ -513,6 +513,10 @@ namespace ZoiperWinForms
                 // "OnCallSecurityLevelChanged channel: Audio level: SdesSrtp"
                 // event
                 regCfg.SIP.EnableSRTP = SRTP;
+
+                var customHeader = ctx.AccountProvider.CreateSIPHeaderField("CustomHeaderName",
+                                      new List<string> { "value1", "value2" }, SipMethodTypes.All);
+                regCfg.SIP.AdditionalHeaders = new List<HeaderField> { customHeader };
             }
             else if ("IAX" == protocol)
             {
