@@ -521,5 +521,20 @@ namespace ZoiperWinForms
                 UnavailableAction();
             }
         }
+
+        private void btnRemoveCallFromConference_Click(object sender, EventArgs e)
+        {
+            var activeCall = lbActiveCalls.SelectedItem as ZDK_NET.Call;
+            if ((activeCall != null) && (m_conference != null))
+            {
+                var result = m_conference.RemoveCall(activeCall, chHangupCallFromConference.Checked);
+                voip.OnZoiperEvent("Call removed from conference: " + activeCall.CalleeName + " result: " + result.Text);
+                voip.OnZoiperEvent("Calls left in conference: " + m_conference.Calls.Count);
+            }
+            else
+            {
+                UnavailableAction();
+            }
+        }
     }
 }
