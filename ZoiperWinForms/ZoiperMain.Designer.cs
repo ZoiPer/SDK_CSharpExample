@@ -48,6 +48,7 @@
             grpBAccountState = new System.Windows.Forms.GroupBox();
             btnSendMessage = new System.Windows.Forms.Button();
             grpCallControl = new System.Windows.Forms.GroupBox();
+            chHangupCallFromConference = new System.Windows.Forms.CheckBox();
             btnRemoveCallFromConference = new System.Windows.Forms.Button();
             btnCloseConference = new System.Windows.Forms.Button();
             btnConference = new System.Windows.Forms.Button();
@@ -85,7 +86,6 @@
             chFMTP = new System.Windows.Forms.CheckBox();
             chZRTP = new System.Windows.Forms.CheckBox();
             btnProbeSip = new System.Windows.Forms.Button();
-            chHangupCallFromConference = new System.Windows.Forms.CheckBox();
             grpBAccountState.SuspendLayout();
             grpCallControl.SuspendLayout();
             grpBActication.SuspendLayout();
@@ -118,7 +118,6 @@
             tbPassword.Name = "tbPassword";
             tbPassword.Size = new System.Drawing.Size(205, 23);
             tbPassword.TabIndex = 2;
-            tbPassword.Text = "Password";
             // 
             // tbServer
             // 
@@ -127,7 +126,6 @@
             tbServer.Name = "tbServer";
             tbServer.Size = new System.Drawing.Size(205, 23);
             tbServer.TabIndex = 3;
-            tbServer.Text = "sip4.zoiper.com";
             // 
             // label1
             // 
@@ -325,6 +323,17 @@
             grpCallControl.TabIndex = 24;
             grpCallControl.TabStop = false;
             grpCallControl.Text = "Call Control";
+            // 
+            // chHangupCallFromConference
+            // 
+            chHangupCallFromConference.AutoSize = true;
+            chHangupCallFromConference.Location = new System.Drawing.Point(139, 127);
+            chHangupCallFromConference.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chHangupCallFromConference.Name = "chHangupCallFromConference";
+            chHangupCallFromConference.Size = new System.Drawing.Size(96, 19);
+            chHangupCallFromConference.TabIndex = 35;
+            chHangupCallFromConference.Text = "Hang Up Call";
+            chHangupCallFromConference.UseVisualStyleBackColor = true;
             // 
             // btnRemoveCallFromConference
             // 
@@ -744,17 +753,6 @@
             btnProbeSip.Text = "Probe SIP";
             btnProbeSip.UseVisualStyleBackColor = true;
             btnProbeSip.Click += btnProbeSip_Click;
-            // 
-            // chHangupCallFromConference
-            // 
-            chHangupCallFromConference.AutoSize = true;
-            chHangupCallFromConference.Location = new System.Drawing.Point(139, 127);
-            chHangupCallFromConference.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            chHangupCallFromConference.Name = "chHangupCallFromConference";
-            chHangupCallFromConference.Size = new System.Drawing.Size(96, 19);
-            chHangupCallFromConference.TabIndex = 35;
-            chHangupCallFromConference.Text = "Hang Up Call";
-            chHangupCallFromConference.UseVisualStyleBackColor = true;
             // 
             // ZoiperMain
             // 
